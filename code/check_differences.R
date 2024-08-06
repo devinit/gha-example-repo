@@ -38,3 +38,21 @@ dollar(fts_sum - fts_mike_sum)
 
 setdiff(unique_fts_ids, unique_fts_mike_ids)
 setdiff(unique_fts_mike_ids, unique_fts_ids)
+
+update_dates = c()
+years = c(2018:2023)
+for(year in years){
+  message(year)
+  fts = fread(paste0("output/fts_", year, ".csv"))
+  fts_mike = fread(paste0("output/fts_", year, "_mike.csv"))
+
+  new_ids = setdiff(unique(fts$id), unique(fts_mike$id))
+  if(length(new_ids) > 0){
+    new_rows = subset(fts, id %in% new_ids)
+    update_dates = c(update_dates, new_rows$updatedAt)
+  }
+}
+
+human_readable_dates <- as.Date(as.POSIXct(update_dates, origin="1970-01-01", tz="UTC"))
+
+View(table(human_readable_dates))
