@@ -85,7 +85,7 @@ fts_curated_flows <- function(years = NULL, update_years = NA, dataset_path = "T
   #write.csv(fts_orgs, "fts_orgs.csv", row.names = FALSE)
   
   #Merge DI coded org types
-  source_org_dicode <- fread("C:/Users/mike.pearson/Development Initiatives Poverty Research Limited/Humanitarian Team - Documents/GHA Programme/OA1 - Crisis trends, needs, resource flows/GHA Report 2024/Datasets/FTS/dac_and_eu.csv", encoding = "UTF-8", showProgress = F)
+  source_org_dicode <- fread("input/dac_and_eu.csv", encoding = "UTF-8", showProgress = F)
   source_org_dicode <- merge(fts_orgs, source_org_dicode[, .(sourceObjects_Organization.id = as.character(sourceObjects_Organization.id), source_orgtype)], by = "sourceObjects_Organization.id", all.x = T)
   
   #Merge source orgs
@@ -190,7 +190,7 @@ fts_curated_flows <- function(years = NULL, update_years = NA, dataset_path = "T
   
   
   #Add deflators
-  deflators <- fread("C:/Users/mike.pearson/Development Initiatives Poverty Research Limited/Humanitarian Team - Documents/GHA Programme/OA1 - Crisis trends, needs, resource flows/GHA Report 2024/Datasets/Deflators/FINAL Merged Dataset/deflators_final.csv", encoding = "UTF-8", showProgress = F)
+  deflators <- fread("input/deflators_final.csv", encoding = "UTF-8", showProgress = F)
   deflators <- deflators[, .(source_org_iso3 = ISO, year = as.character(year), deflator = gdp_defl)]
   
   fts <- merge(fts, deflators, by = c("source_org_iso3", "year"), all.x = T, sort = F)
