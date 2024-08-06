@@ -228,7 +228,7 @@ fts_curated_flows <- function(years = NULL, update_years = NA, dataset_path = "T
   #Reorder columns nicely
   col_order <- union(col_order, names(fts)[order(names(fts))])
   fts <- fts[, col_order, with = F]
-  
+  return(fts)
   #write.csv(fts, "fts_13.csv", row.names = FALSE)
   
 }
