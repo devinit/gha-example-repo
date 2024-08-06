@@ -18,7 +18,7 @@ source("https://raw.githubusercontent.com/devinit/di_script_repo/main/gha/FTS/ft
 source("./code/fts_curated_flows.R")
 
 # Source my changes to fts_curated_master for fts_save_master function
-source("https://raw.githubusercontent.com/devinit/gha_automation/main/IHA/fts_curated_master.R")
+source("./code/fts_curated_master.R")
 
 # Run
 fts_save_master(years=c(2000:2023), path="output")
