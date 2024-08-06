@@ -17,7 +17,7 @@ source("https://raw.githubusercontent.com/devinit/di_script_repo/main/gha/FTS/ft
 # Source Mike's changes to fts_curated
 source("./code/fts_curated_flows.R")
 
-# Source Dan's fts_curated_master for fts_save_master function
+# Source my changes to fts_curated_master for fts_save_master function
 source("https://raw.githubusercontent.com/devinit/gha_automation/main/IHA/fts_curated_master.R")
 
 # Run
