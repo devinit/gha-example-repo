@@ -94,7 +94,7 @@ fts_curated_flows <- function(years = NULL, update_years = NA, dataset_path = "T
   #write.csv(fts, "fts_5.csv", row.names = FALSE)
   
   fts[, source_org_iso3 := fifelse(!is.na(source_orgtype) & source_orgtype == "Multilateral: EC", "EUI",
-                                   fifelse(is.na(source_org_iso3), NA, source_org_iso3))]
+                                   ifelse(is.na(source_org_iso3), NA, source_org_iso3))]
   fts[is.na(source_org_iso3), source_org_iso3 := "DAC"]
   fts[source_org_iso3 == "EUI", source_org_country := "EC"]
   fts[, FTS_source_orgtype := NULL]
